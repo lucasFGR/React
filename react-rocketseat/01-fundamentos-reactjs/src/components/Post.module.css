@@ -94,7 +94,7 @@ justify-content: space-between;
 }
 
 
-.commentForm > button{
+.commentForm button[type=submit]{
     padding: 1rem 1.5rem;
     margin-top: 1rem;
     border-radius: 8px;
@@ -103,16 +103,26 @@ justify-content: space-between;
     color: var(--white);
     font-weight: bold;
     cursor: pointer;
+    transition: background-color 0.2s;;
 
-    transition: background-color 0.2s;
+}
 
+.commentForm footer {
     visibility: hidden;
     max-height: 0;
+}
 
+.commentForm:focus-within footer{  
+    visibility: visible;
+    max-height: none;
 }
 
 .commentForm > button:hover{
     background: var(--green-300);
 }
 
+
+.commentList{
+    margin-top: 2rem;
+}
 
