@@ -3,7 +3,7 @@ import { Comment } from "./Comment";
 import styles from "./Post.module.css";
 import { format, formatDistanceToNow } from "date-fns";
 import ptBR from "date-fns/locale/pt-BR";
-import { FormEvent, ChangeEvent, useState } from "react";
+import { FormEvent, ChangeEvent, useState, InvalidEvent } from "react";
 
 // author: {avar_url "", name "", role""}
 // publishedAt : Date
@@ -18,11 +18,18 @@ interface Author {
 interface PostProps {
   author: Author;
   publishedAt: Date;
+  content: Content[];
+}
+
+interface Content {
+  type: 'paragraph' | 'link';
   content: string
 }
 
 export function Post({ author, publishedAt, content }: PostProps) {
-  const [comments, setComments] = useState([]);
+  const [comments, setComments] = useState([
+    "Comentário bacana"
+  ]);
 
   const [newCommentText, setNewCommentText] = useState([""]);
 
@@ -43,7 +50,7 @@ export function Post({ author, publishedAt, content }: PostProps) {
     event.preventDefault();
 
     setComments([...comments, newCommentText]);
-    setNewCommentText("");
+    setNewCommentText('');
   }
 
   function handleNewCommentChange(event: ChangeEvent<HTMLTextAreaElement>) {
@@ -52,11 +59,11 @@ export function Post({ author, publishedAt, content }: PostProps) {
   }
 
 
-  function handleNewCommentInvalid (event){
+  function handleNewCommentInvalid (event: InvalidEvent<HTMLTextAreaElement>){
         event.target.setCustomValidity("Este campo é obrigatório")
   }
 
-  function deleteComment(commentToDelete) {
+  function deleteComment(commentToDelete: String) {
     const commentWithoutDeleteComment = comments.filter((comment) => {
       return comment !== commentToDelete;
     });
@@ -102,7 +109,6 @@ export function Post({ author, publishedAt, content }: PostProps) {
         <strong>Deixe seu feedback</strong>
 
         <textarea
-          key={id}
           name="comment"
           placeholder="Deixe seu comentário"
           value={newCommentText}

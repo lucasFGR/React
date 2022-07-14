@@ -5,6 +5,19 @@ body {
   padding-bottom: 200px;
 }
 
-h1 {
-  color: blue;
+
+
+.red-title {
+  background-color: black;
+  color: red;
+  padding: 15px;
+}
+
+.title {
+  background-color: black;
+  color: white;
+}
+h3 {
+  text-align: center;
+  color: brown;
 }

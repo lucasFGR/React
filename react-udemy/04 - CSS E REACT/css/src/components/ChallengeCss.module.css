@@ -1,0 +1,22 @@
+.carro_info {
+    border: 2px solid black;
+    text-align: center;
+    padding: 20px;
+    margin: 10px;
+
+}
+
+.modelo {
+    color: gray;
+    background-color: violet
+}
+
+.fabricante {
+    color: blue;
+    background-color: white;
+}
+
+.novo{
+    color: black;
+    color: bisque;
+}
